@@ -21,9 +21,70 @@ struct ContentView: View {
 
     @State private var alertMessage = ""
     @State private var alertTitle = ""
+    
+    @State private var selectedTab = 0
 
     var body: some View {
         
+        VStack(spacing: 0) {
+            
+            Picker("Mode", selection: $selectedTab) {
+                Text("Single Computer").tag(0)
+                Text("Bulk Operations").tag(1)
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding()
+            
+            Group {
+                if selectedTab == 0 {
+                    SingleRedeployView(
+                        jamfURL: $jamfURL,
+                        userName: $userName,
+                        password: $password,
+                        savePassword: $savePassword,
+                        serialNumber: $serialNumber,
+                        buttonDisabled: $buttonDisabled,
+                        showAlert: $showAlert,
+                        alertMessage: $alertMessage,
+                        alertTitle: $alertTitle
+                    )
+                } else {
+                    BulkRedeployView(
+                        jamfURL: jamfURL,
+                        userName: userName,
+                        password: password
+                    )
+                }
+            }
+        }
+        .onAppear {
+            let defaults = UserDefaults.standard
+            userName = defaults.string(forKey: "userName") ?? ""
+            jamfURL = defaults.string(forKey: "jamfURL") ?? ""
+            savePassword = defaults.bool(forKey: "savePassword" )
+            if savePassword  {
+                let credentialsArray = Keychain().retrieve(service: "co.uk.mallion.Jamf-Framework-Redeploy")
+                if credentialsArray.count == 2 {
+                    userName = credentialsArray[0]
+                    password = credentialsArray[1]
+                }
+            }
+        }
+    }
+}
+
+struct SingleRedeployView: View {
+    @Binding var jamfURL: String
+    @Binding var userName: String
+    @Binding var password: String
+    @Binding var savePassword: Bool
+    @Binding var serialNumber: String
+    @Binding var buttonDisabled: Bool
+    @Binding var showAlert: Bool
+    @Binding var alertMessage: String
+    @Binding var alertTitle: String
+    
+    var body: some View {
         VStack(alignment: .trailing){
             
             HStack(alignment: .center) {
@@ -114,20 +175,12 @@ struct ContentView: View {
             .disabled(buttonDisabled)
         }
         .onAppear {
-            let defaults = UserDefaults.standard
-            userName = defaults.string(forKey: "userName") ?? ""
-            jamfURL = defaults.string(forKey: "jamfURL") ?? ""
-            savePassword = defaults.bool(forKey: "savePassword" )
-            if savePassword  {
-                let credentialsArray = Keychain().retrieve(service: "co.uk.mallion.Jamf-Framework-Redeploy")
-                if credentialsArray.count == 2 {
-                    userName = credentialsArray[0]
-                    password = credentialsArray[1]
-                }
-            }
-
+            updateAction()
         }
-        
+        .alert(isPresented: $showAlert,
+               content: {
+            showCustomAlert()
+        })
     }
     
     func updateAction() {
@@ -138,7 +191,6 @@ struct ContentView: View {
         }
     }
     
-    
     func showCustomAlert() -> Alert {
         return Alert(
                 title: Text(alertTitle),
@@ -147,12 +199,10 @@ struct ContentView: View {
                 )
     }
 
-    
     func redploy() async {
         let jamfPro = JamfProAPI()
         
         let (authToken, _) = await jamfPro.getToken(jssURL: jamfURL, clientID: userName, secret: password)
-        print(authToken)
         guard let authToken else {
             alertMessage = "Could not authenticate. Please check the url and authentication details"
             alertTitle = "Authentication Error"

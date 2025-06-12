@@ -13,10 +13,10 @@ struct Jamf_Framework_RedeployApp: App {
         WindowGroup {
             ContentView()
                 .frame(
-                    minWidth: 500, maxWidth: 500,
-                    minHeight: 300, maxHeight: 300)
+                    minWidth: 600, maxWidth: .infinity,
+                    minHeight: 400, maxHeight: .infinity)
 
         }
-        .windowResizability(.contentSize)
+        .windowResizability(.contentMinSize)
     }
 }

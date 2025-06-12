@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FB7EA00C2C6F6BEF00C990E4 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7EA00B2C6F6BEF00C990E4 /* Logger.swift */; };
+		FB8EA01D2C7F7CEF00D990F5 /* CSVHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8EA01C2C7F7CEF00D990F5 /* CSVHandler.swift */; };
+		FB8EA01F2C7F7CEF00D990F6 /* BulkRedeployView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8EA01E2C7F7CEF00D990F6 /* BulkRedeployView.swift */; };
 		FBFE2ED1296C6A7000351FF3 /* Jamf_Framework_RedeployApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFE2ED0296C6A7000351FF3 /* Jamf_Framework_RedeployApp.swift */; };
 		FBFE2ED3296C6A7000351FF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFE2ED2296C6A7000351FF3 /* ContentView.swift */; };
 		FBFE2ED5296C6A7100351FF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBFE2ED4296C6A7100351FF3 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		FB7EA00B2C6F6BEF00C990E4 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		FB8EA01C2C7F7CEF00D990F5 /* CSVHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVHandler.swift; sourceTree = "<group>"; };
+		FB8EA01E2C7F7CEF00D990F6 /* BulkRedeployView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkRedeployView.swift; sourceTree = "<group>"; };
 		FBFE2ECD296C6A7000351FF3 /* Jamf Framework Redeploy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jamf Framework Redeploy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBFE2ED0296C6A7000351FF3 /* Jamf_Framework_RedeployApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jamf_Framework_RedeployApp.swift; sourceTree = "<group>"; };
 		FBFE2ED2296C6A7000351FF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,8 +64,10 @@
 			children = (
 				FBFE2ED0296C6A7000351FF3 /* Jamf_Framework_RedeployApp.swift */,
 				FBFE2ED2296C6A7000351FF3 /* ContentView.swift */,
+				FB8EA01E2C7F7CEF00D990F6 /* BulkRedeployView.swift */,
 				FBFE2EE1296DAEBB00351FF3 /* Keychain.swift */,
 				FBFE2EDF296D62E200351FF3 /* JamfProApi.swift */,
+				FB8EA01C2C7F7CEF00D990F5 /* CSVHandler.swift */,
 				FBFE2ED4296C6A7100351FF3 /* Assets.xcassets */,
 				FBFE2ED9296C6A7100351FF3 /* Jamf_Framework_Redeploy.entitlements */,
 				FBFE2ED6296C6A7100351FF3 /* Preview Content */,
@@ -150,8 +156,10 @@
 			files = (
 				FB7EA00C2C6F6BEF00C990E4 /* Logger.swift in Sources */,
 				FBFE2ED3296C6A7000351FF3 /* ContentView.swift in Sources */,
+				FB8EA01F2C7F7CEF00D990F6 /* BulkRedeployView.swift in Sources */,
 				FBFE2EE2296DAEBB00351FF3 /* Keychain.swift in Sources */,
 				FBFE2EE0296D62E200351FF3 /* JamfProApi.swift in Sources */,
+				FB8EA01D2C7F7CEF00D990F5 /* CSVHandler.swift in Sources */,
 				FBFE2ED1296C6A7000351FF3 /* Jamf_Framework_RedeployApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +290,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_ASSET_PATHS = "\"Jamf Framework Redeploy/Preview Content\"";
-				DEVELOPMENT_TEAM = VR4GB7TBDP;
+				DEVELOPMENT_TEAM = 8MW79Q3XKA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -300,7 +308,7 @@
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
-		};
+			};
 		FBFE2EDE296C6A7100351FF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -311,7 +319,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_ASSET_PATHS = "\"Jamf Framework Redeploy/Preview Content\"";
-				DEVELOPMENT_TEAM = VR4GB7TBDP;
+				DEVELOPMENT_TEAM = 8MW79Q3XKA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
