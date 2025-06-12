@@ -35,27 +35,30 @@ struct ContentView: View {
             .pickerStyle(SegmentedPickerStyle())
             .padding()
             
-            Group {
-                if selectedTab == 0 {
-                    SingleRedeployView(
-                        jamfURL: $jamfURL,
-                        userName: $userName,
-                        password: $password,
-                        savePassword: $savePassword,
-                        serialNumber: $serialNumber,
-                        buttonDisabled: $buttonDisabled,
-                        showAlert: $showAlert,
-                        alertMessage: $alertMessage,
-                        alertTitle: $alertTitle
-                    )
-                } else {
-                    BulkRedeployView(
-                        jamfURL: jamfURL,
-                        userName: userName,
-                        password: password
-                    )
+            VStack(alignment: .leading) {
+                Group {
+                    if selectedTab == 0 {
+                        SingleRedeployView(
+                            jamfURL: $jamfURL,
+                            userName: $userName,
+                            password: $password,
+                            savePassword: $savePassword,
+                            serialNumber: $serialNumber,
+                            buttonDisabled: $buttonDisabled,
+                            showAlert: $showAlert,
+                            alertMessage: $alertMessage,
+                            alertTitle: $alertTitle
+                        )
+                    } else {
+                        BulkRedeployView(
+                            jamfURL: jamfURL,
+                            userName: userName,
+                            password: password
+                        )
+                    }
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
         .onAppear {
             let defaults = UserDefaults.standard

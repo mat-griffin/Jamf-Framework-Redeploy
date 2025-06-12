@@ -102,7 +102,8 @@ struct BulkRedeployView: View {
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(maxWidth: .infinity, alignment: .top)
+                .padding(.top, 60)
             }
         }
         .padding()
