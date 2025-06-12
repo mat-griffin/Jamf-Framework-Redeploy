@@ -85,7 +85,7 @@ struct SingleRedeployView: View {
     @Binding var alertTitle: String
     
     var body: some View {
-        VStack(alignment: .trailing){
+        VStack(spacing: 20) {
             
             HStack(alignment: .center) {
               
@@ -128,7 +128,6 @@ struct SingleRedeployView: View {
                         }
                 }
             }
-            .padding()
             .alert(isPresented: self.$showAlert,
                    content: {
                 self.showCustomAlert()
@@ -138,7 +137,6 @@ struct SingleRedeployView: View {
                 Text("Save Password")
             }
             .toggleStyle(CheckboxToggleStyle())
-            .offset(x: -260 , y: -10)
             .onChange(of: savePassword) { newValue in
                 let defaults = UserDefaults.standard
                 defaults.set(savePassword, forKey: "savePassword")
@@ -156,7 +154,6 @@ struct SingleRedeployView: View {
             
             HStack {
                 Text("Serial Number:")
-                    .padding(.leading, 15)
                 
                 TextField("Mac Serial Number" , text: $serialNumber)
                     .textFieldStyle(.roundedBorder)
@@ -164,16 +161,19 @@ struct SingleRedeployView: View {
                         updateAction()
                     }
             }
-            .padding()
             
-            Button(/*@START_MENU_TOKEN@*/"Redeploy"/*@END_MENU_TOKEN@*/) {
-                Task {
-                    await redploy()
+            HStack {
+                Spacer()
+                Button("Redeploy") {
+                    Task {
+                        await redploy()
+                    }
                 }
+                .disabled(buttonDisabled)
+                Spacer()
             }
-            .padding()
-            .disabled(buttonDisabled)
         }
+        .padding()
         .onAppear {
             updateAction()
         }
