@@ -1,5 +1,6 @@
 # Jamf-Framework-Redeploy
-Fork of the orignal now with added bulk uplaod.
+**This is a fork of the superb original Jamf Framework Redeploy app by [red5coder](https://github.com/red5coder), which you can find [here](https://github.com/red5coder/Jamf-Framework-Redeploy).**
+This is a great app which any Mac admin should have, now with a CSV upload for a build redeployment.
 
 With the release of Jamf Pro 10.36, a new API endpoint was added, which allows you to distribute a QuickAdd.pkg to the macOS client to re-deploy the Jamf Framework. Under the hood, its using the InstallEnterpriseApplication MDM command.
 
