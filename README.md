@@ -36,8 +36,8 @@ For bulk operations imort a csv.
 the CSV can be a simple list of serials no header is required or mutliple columns.
 see the exmample CSV files
 
-📥 **[Download Minimal Sample CSV](example%20csv/sample_computers_minmal.csv)**
-📥 **[Download Sample CSV](example%20csv/sample_computers.csv)**
+📥 **[Download Minimal Sample CSV](sample_computes_minimal.csv)**
+📥 **[Download Sample CSV](example_computers.csv)**
 
 
 ## 🚀 Usage
