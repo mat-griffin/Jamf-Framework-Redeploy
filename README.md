@@ -39,9 +39,11 @@ see the exmample CSV files:
 
 ## 🚀 Usage
 
-Download the .pkg. If you Mac diaplays a Not Opened dialogue open you System Settings, goto Privacy, scroll down to the Securiyt section and click Open Anyway.
-<img alt="Dialogue" src="https://github.com/mat-griffin/Jamf-Framework-Redeploy/blob/main/images/dialogue.png">
-<img alt="Dialogue" src="https://github.com/mat-griffin/Jamf-Framework-Redeploy/blob/main/images/approveinstall.png">
+Download the .pkg youu Mac diaplays a Not Opened dialogue.
+<img alt="Open Dialogue warning" src="https://github.com/mat-griffin/Jamf-Framework-Redeploy/blob/main/images/dialogue.png">
+
+If so open you System Settings, goto Privacy and scroll down to the Security section and click Open Anyway.
+<img alt="Approve Anyway in System Settings" src="https://github.com/mat-griffin/Jamf-Framework-Redeploy/blob/main/images/approveinstall.png">
 
 1. **Configure Authentication**:
    - Enter your Jamf Pro server URL
