@@ -40,11 +40,11 @@ See the example CSV files:
 
 ## 🚀 Usage
 
-Download the .pkg your Mac displays a Not Opened dialogue.
+Download the .pkg. Your Mac may display a warning dialogue.
 
 <img width="300" alt="Open Dialogue warning" src="https://raw.githubusercontent.com/mat-griffin/Jamf-Framework-Redeploy/refs/heads/main/images/dialogue.png">
 
-If so open you System Settings, goto Privacy and scroll down to the Security section and click Open Anyway.
+If so open your System Settings, goto Privacy and scroll down to the Security section and click Open Anyway and follow any other on screen prompts to allow the app to run.
 
 <img width="450" alt="Approve Anyway in System Settings" src="https://raw.githubusercontent.com/mat-griffin/Jamf-Framework-Redeploy/refs/heads/main/images/approveinstall.png">
 
