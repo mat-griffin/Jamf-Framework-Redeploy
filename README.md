@@ -39,6 +39,10 @@ see the exmample CSV files:
 
 ## 🚀 Usage
 
+Download the .pkg. If you Mac diaplays a Not Opened dialogue open you System Settings, goto Privacy, scroll down to the Securiyt section and click Open Anyway.
+<img alt="Dialogue" src="https://github.com/mat-griffin/Jamf-Framework-Redeploy/blob/main/images/dialogue.png">
+<img alt="Dialogue" src="https://github.com/mat-griffin/Jamf-Framework-Redeploy/blob/main/images/approveinstall.png">
+
 1. **Configure Authentication**:
    - Enter your Jamf Pro server URL
    - Provide your API Client ID and Secret
@@ -65,3 +69,6 @@ If successful, you'll see an `InstallEnterpriseApplication` MDM command in the d
 - **v1.2** - Added bulk operations mode, modern macOS UI, dark mode support, and CSV import functionality
 - **v1.1** - Authentication now uses API Roles and Clients. Support for basic authentication has been removed.
 - **v1.0** - Initial release with single computer deployment capability
+
+
+**Once again huge thanks to [red5coder](https://github.com/red5coder)** for this app!
