@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -112,7 +112,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					FBFE2ECC296C6A7000351FF3 = {
 						CreatedOnToolsVersion = 14.2;
@@ -120,7 +120,6 @@
 				};
 			};
 			buildConfigurationList = FBFE2EC8296C6A7000351FF3 /* Build configuration list for PBXProject "Jamf Framework Redeploy" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -128,6 +127,7 @@
 				Base,
 			);
 			mainGroup = FBFE2EC4296C6A7000351FF3;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = FBFE2ECE296C6A7000351FF3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -200,9 +200,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -260,9 +262,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -289,6 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 36;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Jamf Framework Redeploy/Preview Content\"";
 				DEVELOPMENT_TEAM = 8MW79Q3XKA;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -308,7 +313,7 @@
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
-			};
+		};
 		FBFE2EDE296C6A7100351FF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -318,6 +323,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 36;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Jamf Framework Redeploy/Preview Content\"";
 				DEVELOPMENT_TEAM = 8MW79Q3XKA;
 				ENABLE_HARDENED_RUNTIME = YES;

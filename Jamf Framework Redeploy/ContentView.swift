@@ -23,17 +23,73 @@ struct ContentView: View {
     @State private var alertTitle = ""
     
     @State private var selectedTab = 0
+    @AppStorage("isDarkMode") private var isDarkMode = false
 
     var body: some View {
         
         VStack(spacing: 0) {
-            
-            Picker("Mode", selection: $selectedTab) {
-                Text("Single Computer").tag(0)
-                Text("Bulk Operations").tag(1)
+            // Menu Section
+            HStack(spacing: 16) {
+                // Mode Selection
+                HStack(spacing: 8) {
+                    Button(action: { selectedTab = 0 }) {
+                        HStack(spacing: 6) {
+                            Image(systemName: "desktopcomputer")
+                            Text("Single Computer")
+                        }
+                        .foregroundColor(selectedTab == 0 ? .white : .primary)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(selectedTab == 0 ? Color.accentColor : Color.clear)
+                        .cornerRadius(6)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6)
+                                .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                        )
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    
+                    Button(action: { selectedTab = 1 }) {
+                        HStack(spacing: 6) {
+                            Image(systemName: "square.grid.3x3")
+                            Text("Bulk Operations")
+                        }
+                        .foregroundColor(selectedTab == 1 ? .white : .primary)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(selectedTab == 1 ? Color.accentColor : Color.clear)
+                        .cornerRadius(6)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6)
+                                .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                        )
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+                
+                Spacer()
+                
+                // Dark Mode Toggle
+                Button(action: { 
+                    isDarkMode.toggle()
+                }) {
+                    HStack(spacing: 6) {
+                        Image(systemName: isDarkMode ? "moon.fill" : "sun.max.fill")
+                        Text(isDarkMode ? "Dark" : "Light")
+                    }
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.regular)
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding()
+            .padding(.horizontal, 20)
+            .padding(.vertical, 12)
+            .background(Color(NSColor.controlBackgroundColor))
+            .overlay(
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundColor(Color(NSColor.separatorColor)),
+                alignment: .bottom
+            )
             
             VStack(alignment: .leading) {
                 Group {
@@ -60,6 +116,7 @@ struct ContentView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
+        .preferredColorScheme(isDarkMode ? .dark : .light)
         .onAppear {
             let defaults = UserDefaults.standard
             userName = defaults.string(forKey: "userName") ?? ""
@@ -89,82 +146,85 @@ struct SingleRedeployView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            
+            // Jamf Server URL
             HStack(alignment: .center) {
-              
-                VStack(alignment: .trailing, spacing: 12.0) {
-                    Text("Jamf Server URL:")
-                    Text("Client ID:")
-                    Text("Secret:")
-                }
-
-                
-                VStack(alignment: .leading, spacing: 7.0) {
-                    TextField("https://your-jamf-server.com" , text: $jamfURL)
-                        .textFieldStyle(.roundedBorder)
-                        .onChange(of: jamfURL) { newValue in
-                            let defaults = UserDefaults.standard
-                            defaults.set(jamfURL , forKey: "jamfURL")
-                            updateAction()
-                        }
-                    TextField("Your Jamf Pro admin user name" , text: $userName)
-                        .textFieldStyle(.roundedBorder)
-                        .onChange(of: userName) { newValue in
-                            let defaults = UserDefaults.standard
-                            defaults.set(userName , forKey: "userName")
-                            updateAction()
-                        }
-
-                    SecureField("Your password" , text: $password)
-                        .textFieldStyle(.roundedBorder)
-                        .onChange(of: password) { newValue in
-                            if savePassword {
-                                DispatchQueue.global(qos: .background).async {
-                                    Keychain().save(service: "co.uk.mallion.Jamf-Framework-Redeploy", account: userName, data: password)
-                                }
-                            } else {
-                                DispatchQueue.global(qos: .background).async {
-                                    Keychain().save(service: "co.uk.mallion.Jamf-Framework-Redeploy", account: userName, data: "")
-                                }
+                Text("Jamf Server URL:")
+                    .frame(width: 120, alignment: .trailing)
+                TextField("https://your-jamf-server.com", text: $jamfURL)
+                    .textFieldStyle(.roundedBorder)
+                    .onChange(of: jamfURL) { newValue in
+                        let defaults = UserDefaults.standard
+                        defaults.set(jamfURL , forKey: "jamfURL")
+                        updateAction()
+                    }
+            }
+            // Client ID
+            HStack(alignment: .center) {
+                Text("Client ID:")
+                    .frame(width: 120, alignment: .trailing)
+                TextField("Your Jamf Pro admin user name", text: $userName)
+                    .textFieldStyle(.roundedBorder)
+                    .onChange(of: userName) { newValue in
+                        let defaults = UserDefaults.standard
+                        defaults.set(userName , forKey: "userName")
+                        updateAction()
+                    }
+            }
+            // Secret
+            HStack(alignment: .center) {
+                Text("Secret:")
+                    .frame(width: 120, alignment: .trailing)
+                SecureField("Your password", text: $password)
+                    .textFieldStyle(.roundedBorder)
+                    .onChange(of: password) { newValue in
+                        if savePassword {
+                            DispatchQueue.global(qos: .background).async {
+                                Keychain().save(service: "co.uk.mallion.Jamf-Framework-Redeploy", account: userName, data: password)
                             }
-                            updateAction()
+                        } else {
+                            DispatchQueue.global(qos: .background).async {
+                                Keychain().save(service: "co.uk.mallion.Jamf-Framework-Redeploy", account: userName, data: "")
+                            }
                         }
+                        updateAction()
+                    }
+            }
+            // Save Password Checkbox
+            HStack(alignment: .center) {
+                Text("")
+                    .frame(width: 120, alignment: .trailing)
+                HStack {
+                    Toggle(isOn: $savePassword) {
+                        Text("Save Password")
+                    }
+                    .toggleStyle(CheckboxToggleStyle())
+                    .onChange(of: savePassword) { newValue in
+                        let defaults = UserDefaults.standard
+                        defaults.set(savePassword, forKey: "savePassword")
+                        if savePassword {
+                            DispatchQueue.global(qos: .background).async {
+                                Keychain().save(service: "co.uk.mallion.Jamf-Framework-Redeploy", account: userName, data: password)
+                            }
+                        } else {
+                            DispatchQueue.global(qos: .background).async {
+                                Keychain().save(service: "co.uk.mallion.Jamf-Framework-Redeploy", account: userName, data: "")
+                            }
+                        }
+                    }
+                    Spacer()
                 }
             }
-            .alert(isPresented: self.$showAlert,
-                   content: {
-                self.showCustomAlert()
-            })
-            
-            Toggle(isOn: $savePassword) {
-                Text("Save Password")
-            }
-            .toggleStyle(CheckboxToggleStyle())
-            .onChange(of: savePassword) { newValue in
-                let defaults = UserDefaults.standard
-                defaults.set(savePassword, forKey: "savePassword")
-                if savePassword {
-                    DispatchQueue.global(qos: .background).async {
-                        Keychain().save(service: "co.uk.mallion.Jamf-Framework-Redeploy", account: userName, data: password)
-                    }
-                } else {
-                    DispatchQueue.global(qos: .background).async {
-                        Keychain().save(service: "co.uk.mallion.Jamf-Framework-Redeploy", account: userName, data: "")
-                    }
-                }
-
-            }
-            
-            HStack {
+            // Serial Number
+            HStack(alignment: .center) {
                 Text("Serial Number:")
-                
-                TextField("Mac Serial Number" , text: $serialNumber)
+                    .frame(width: 120, alignment: .trailing)
+                TextField("Mac Serial Number", text: $serialNumber)
                     .textFieldStyle(.roundedBorder)
                     .onChange(of: serialNumber) { newValue in
                         updateAction()
                     }
             }
-            
+            // Redeploy Button
             HStack {
                 Spacer()
                 Button("Redeploy") {
@@ -173,7 +233,6 @@ struct SingleRedeployView: View {
                     }
                 }
                 .disabled(buttonDisabled)
-                Spacer()
             }
         }
         .padding()

@@ -55,8 +55,8 @@ struct BulkRedeployView: View {
                         
                         Spacer()
                         
-                        Button("Reset Status") {
-                            csvHandler.resetStatus()
+                        Button("Clear List") {
+                            csvHandler.clearComputers()
                         }
                         .disabled(isProcessing)
                     }

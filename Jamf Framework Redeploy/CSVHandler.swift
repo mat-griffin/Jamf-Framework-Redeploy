@@ -135,6 +135,12 @@ class CSVHandler: ObservableObject {
         processedCount = 0
     }
     
+    func clearComputers() {
+        computers = []
+        totalCount = 0
+        processedCount = 0
+    }
+    
     func updateComputerStatus(_ computerId: UUID, status: ComputerRecord.DeploymentStatus, error: String? = nil) {
         if let index = computers.firstIndex(where: { $0.id == computerId }) {
             computers[index].status = status
