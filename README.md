@@ -34,11 +34,8 @@ Efficiently process multiple computers using CSV import with progress tracking.
 
 For bulk operations imort a csv.
 the CSV can be a simple list of serials no header is required or mutliple columns.
-see the exmample CSV files
-
-📥 **[Download Minimal Sample CSV](sample_computes_minimal.csv)**
-📥 **[Download Sample CSV](example_computers.csv)**
-
+see the exmample CSV files:
+[Example CSV folder](https://github.com/mat-griffin/Jamf-Framework-Redeploy/tree/main/example%20csv)
 
 ## 🚀 Usage
 
