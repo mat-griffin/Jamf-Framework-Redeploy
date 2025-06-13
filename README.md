@@ -1,3 +1,4 @@
+
 # Jamf-Framework-Redeploy
 **This is a fork of the superb original Jamf Framework Redeploy app by [red5coder](https://github.com/red5coder), which you can find [here](https://github.com/red5coder/Jamf-Framework-Redeploy).**
 This is a great app which any Mac admin should have, now with a CSV upload for a build redeployment.
@@ -11,12 +12,12 @@ The Jamf Framework Redeploy utility provides both **single computer** and **bulk
 ### Single Computer Mode
 Perfect for deploying to individual machines with real-time feedback.
 
-<img src="images/single_mode.png" alt="Single Computer Mode" width="600">
+<img src="https://raw.githubusercontent.com/mat-griffin/Jamf-Framework-Redeploy/refs/heads/main/images/single_mode.png" alt="Single Computer Mode" width="600">
 
 ### Bulk Operations Mode
 Efficiently process multiple computers using CSV import with progress tracking.
 
-<img src="images/buk_mode.png" alt="Bulk Operations Mode" width="600">
+<img src="https://raw.githubusercontent.com/mat-griffin/Jamf-Framework-Redeploy/refs/heads/main/images/buk_mode.png" alt="Bulk Operations Mode" width="600">
 
 
 ## 📋 Requirements
@@ -32,18 +33,20 @@ Efficiently process multiple computers using CSV import with progress tracking.
 
 ## 📄 CSV File Format
 
-For bulk operations imort a csv.
-the CSV can be a simple list of serials no header is required or mutliple columns.
-see the exmample CSV files:
+For bulk operations import a .csv.
+The CSV can be a simple list of serials no header is required or multiple columns.
+See the example CSV files:
 [Example CSV folder](https://github.com/mat-griffin/Jamf-Framework-Redeploy/tree/main/example%20csv)
 
 ## 🚀 Usage
 
-Download the .pkg youu Mac diaplays a Not Opened dialogue.
-<img alt="Open Dialogue warning" src="https://github.com/mat-griffin/Jamf-Framework-Redeploy/blob/main/images/dialogue.png">
+Download the .pkg your Mac displays a Not Opened dialogue.
+
+<img width="300" alt="Open Dialogue warning" src="https://raw.githubusercontent.com/mat-griffin/Jamf-Framework-Redeploy/refs/heads/main/images/dialogue.png">
 
 If so open you System Settings, goto Privacy and scroll down to the Security section and click Open Anyway.
-<img alt="Approve Anyway in System Settings" src="https://github.com/mat-griffin/Jamf-Framework-Redeploy/blob/main/images/approveinstall.png">
+
+<img width="450" alt="Approve Anyway in System Settings" src="https://raw.githubusercontent.com/mat-griffin/Jamf-Framework-Redeploy/refs/heads/main/images/approveinstall.png">
 
 1. **Configure Authentication**:
    - Enter your Jamf Pro server URL
@@ -68,9 +71,8 @@ If successful, you'll see an `InstallEnterpriseApplication` MDM command in the d
 
 ## 📝 Version History
 
-- **v1.2** - Added bulk operations mode, modern macOS UI, dark mode support, and CSV import functionality
+- **v1.2** - **My Forked update** - Added bulk operations mode, modern macOS UI, dark mode support, and CSV import functionality
 - **v1.1** - Authentication now uses API Roles and Clients. Support for basic authentication has been removed.
 - **v1.0** - Initial release with single computer deployment capability
-
 
 **Once again huge thanks to [red5coder](https://github.com/red5coder)** for this app!
